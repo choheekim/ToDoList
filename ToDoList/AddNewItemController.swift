@@ -8,28 +8,30 @@
 
 import UIKit
 
+protocol AddNewItemControllerDelegate: class {
+    func addToDoItemToList(text:String)
+}
+
+
 class AddNewItemController: UIViewController {
 
+    @IBOutlet weak var toDoItemTextField: UITextField!
+    
+    weak var delegate: AddNewItemControllerDelegate?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
+    @IBAction func cancelBarButtonPressed(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func saveBarButtonPressed(_ sender: AnyObject) {
+        delegate?.addToDoItemToList(text: toDoItemTextField.text!)
+        self.dismiss(animated: true, completion: nil)
     }
-    */
-
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11C59D221DBC590900025691 /* AddNewItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C59D211DBC590900025691 /* AddNewItemController.swift */; };
 		11FB9A6D1DB537C30007F154 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FB9A6C1DB537C30007F154 /* AppDelegate.swift */; };
 		11FB9A6F1DB537C30007F154 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FB9A6E1DB537C30007F154 /* ViewController.swift */; };
 		11FB9A721DB537C30007F154 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11FB9A701DB537C30007F154 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		11C59D211DBC590900025691 /* AddNewItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewItemController.swift; sourceTree = "<group>"; };
 		11FB9A691DB537C30007F154 /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11FB9A6C1DB537C30007F154 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11FB9A6E1DB537C30007F154 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				11FB9A781DB537C30007F154 /* LaunchScreen.storyboard */,
 				11FB9A7B1DB537C30007F154 /* Info.plist */,
 				11FB9A731DB537C30007F154 /* ToDoList.xcdatamodeld */,
+				11C59D211DBC590900025691 /* AddNewItemController.swift */,
 			);
 			path = ToDoList;
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 				11FB9A6F1DB537C30007F154 /* ViewController.swift in Sources */,
 				11FB9A751DB537C30007F154 /* ToDoList.xcdatamodeld in Sources */,
 				11FB9A6D1DB537C30007F154 /* AppDelegate.swift in Sources */,
+				11C59D221DBC590900025691 /* AddNewItemController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +308,7 @@
 				11FB9A801DB537C30007F154 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

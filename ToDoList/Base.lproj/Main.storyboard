@@ -3,13 +3,14 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--To Do List-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ToDoList" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ToDoList" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -18,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qe9-3a-1dB">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Qe9-3a-1dB">
                                 <frame key="frameInset" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -27,7 +28,7 @@
                                         <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CfW-p4-Vxd" id="gWU-Vh-rHO">
-                                            <frame key="frameInset" width="375" height="43"/>
+                                            <frame key="frameInset" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -36,7 +37,13 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="To Do List" id="sPj-CS-1M6"/>
+                    <navigationItem key="navigationItem" title="To Do List" id="sPj-CS-1M6">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="u80-pm-cgJ">
+                            <connections>
+                                <segue destination="dTf-6B-QVk" kind="modal" identifier="AddToDoItemSegue" id="qTJ-9S-zPf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Qe9-3a-1dB" id="mwL-BR-IVM"/>
                     </connections>
@@ -44,6 +51,59 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="885.60000000000002" y="792.95352323838085"/>
+        </scene>
+        <!--Add New Item-->
+        <scene sceneID="fY6-9Q-xOT">
+            <objects>
+                <viewController id="sYI-O2-x36" customClass="AddNewItemController" customModule="ToDoList" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NgW-TC-BSp"/>
+                        <viewControllerLayoutGuide type="bottom" id="0Xx-n8-J7I"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="egz-2B-dQN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a new to do item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HF6-1z-gTa">
+                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your to do item here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NwK-Ra-ZGZ">
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="HF6-1z-gTa" firstAttribute="centerY" secondItem="egz-2B-dQN" secondAttribute="centerY" id="BZ4-l1-g7g"/>
+                            <constraint firstItem="NwK-Ra-ZGZ" firstAttribute="leading" secondItem="egz-2B-dQN" secondAttribute="leadingMargin" constant="20" id="O5d-hM-UXe"/>
+                            <constraint firstItem="HF6-1z-gTa" firstAttribute="centerX" secondItem="egz-2B-dQN" secondAttribute="centerX" id="OYV-Qt-IEC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="NwK-Ra-ZGZ" secondAttribute="trailing" constant="20" id="SPe-mO-dOU"/>
+                            <constraint firstItem="NwK-Ra-ZGZ" firstAttribute="centerX" secondItem="egz-2B-dQN" secondAttribute="centerX" id="XEY-94-pi5"/>
+                            <constraint firstItem="NwK-Ra-ZGZ" firstAttribute="top" secondItem="HF6-1z-gTa" secondAttribute="bottom" constant="8" id="gGw-gd-dxA"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add New Item" id="aVW-bd-t2i">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="R5d-We-H7l">
+                            <connections>
+                                <action selector="cancelBarButtonPressed:" destination="sYI-O2-x36" id="9vT-27-2id"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="lkO-vp-Pnh">
+                            <connections>
+                                <action selector="saveBarButtonPressed:" destination="sYI-O2-x36" id="fIU-cp-Nga"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="toDoItemTextField" destination="NwK-Ra-ZGZ" id="Qt8-Ck-7fi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PHg-TQ-bkK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2565.5999999999999" y="792.95352323838085"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sOA-ii-jw0">
@@ -62,6 +122,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lug-xz-UeY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="792.95352323838085"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="4PF-Gs-XQF">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dTf-6B-QVk" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="c10-yj-apl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="sYI-O2-x36" kind="relationship" relationship="rootViewController" id="gPr-YJ-AUF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3eU-TH-4OS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1624.8" y="792.95352323838085"/>
         </scene>
     </scenes>
 </document>
