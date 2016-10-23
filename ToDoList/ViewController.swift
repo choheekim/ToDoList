@@ -13,13 +13,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var tableView: UITableView!
     
-    var toDoList: [Int:String] = [:]
+    var toDoList: NSMutableArray = []
+    
+    var completedToDoList: [Int:String] = [:]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self;
         tableView.dataSource = self;
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        resetAccessoryType()
+        tableView.reloadData()
     }
 
 
@@ -35,13 +42,35 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoCell", for: indexPath)
-        cell.textLabel?.text = toDoList[indexPath.row]
+        cell.textLabel?.text = toDoList[indexPath.row] as! String
         
         return cell
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
+    }
+    
+    func resetAccessoryType() {
+        for row in 0..<toDoList.count {
+            if let cell = tableView.cellForRow(at: IndexPath(row:row, section:0)) {
+                cell.accessoryType = .none
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if let cell = tableView.cellForRow(at: indexPath) {
+            if cell.accessoryType == .none {
+                cell.accessoryType = .checkmark
+                completedToDoList[completedToDoList.count] = toDoList[indexPath.row] as? String
+                toDoList.removeObject(at: indexPath.row)
+            }else {
+                cell.accessoryType = .none
+            }
+        }
     }
     
     func addToDoItemToList(text: String) {
@@ -57,6 +86,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             let addToDoViewController = navigationController.topViewController as! AddNewItemController
             
             addToDoViewController.delegate = self
+        }else if(segue.identifier == "CompletedItemSegue") {
+            let completedToDoItemsController = segue.destination as! CompletedToDoItemsController
+            completedToDoItemsController.completedToDoList = completedToDoList 
+            
         }
         
     }
